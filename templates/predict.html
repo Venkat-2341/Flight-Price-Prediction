@@ -1,0 +1,114 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<style>
+    .hero-image {
+        background-image: url("{{ url_for('static', filename='images/flight4.jpg') }}");
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: red;
+    }
+    .form-container {
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 20px;
+        border-radius: 10px;
+        max-width: 600px;
+        margin: 20px auto;
+    }
+    .output-container {
+        margin-top: 20px;
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+</style>
+
+<div class="hero-image">
+    <div class="container text-center">
+        <h1>Flight Price Prediction</h1>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="form-container">
+                    <form action="" method="post">
+                        {{ form.hidden_tag() }}
+                        <div class="form-group">
+                            {{ form.airline.label(class="font-weight-bold") }}
+                            {{ form.airline(class="form-control") }}
+                            {% for error in form.airline.errors %}
+                                <div class="invalid-feedback">{{ error }}</div>
+                            {% endfor %}
+                        </div>
+                        <div class="form-group">
+                            {{ form.date_of_journey.label(class="font-weight-bold") }}
+                            {{ form.date_of_journey(class="form-control") }}
+                            {% for error in form.date_of_journey.errors %}
+                                <div class="invalid-feedback">{{ error }}</div>
+                            {% endfor %}
+                        </div>
+                        <div class="form-group">
+                            {{ form.source.label(class="font-weight-bold") }}
+                            {{ form.source(class="form-control") }}
+                            {% for error in form.source.errors %}
+                                <div class="invalid-feedback">{{ error }}</div>
+                            {% endfor %}
+                        </div>
+                        <div class="form-group">
+                            {{ form.destination.label(class="font-weight-bold") }}
+                            {{ form.destination(class="form-control") }}
+                            {% for error in form.destination.errors %}
+                                <div class="invalid-feedback">{{ error }}</div>
+                            {% endfor %}
+                        </div>
+                        <div class="form-group">
+                            {{ form.dep_time.label(class="font-weight-bold") }}
+                            {{ form.dep_time(class="form-control") }}
+                            {% for error in form.dep_time.errors %}
+                                <div class="invalid-feedback">{{ error }}</div>
+                            {% endfor %}
+                        </div>
+                        <div class="form-group">
+                            {{ form.arrival_time.label(class="font-weight-bold") }}
+                            {{ form.arrival_time(class="form-control") }}
+                            {% for error in form.arrival_time.errors %}
+                                <div class="invalid-feedback">{{ error }}</div>
+                            {% endfor %}
+                        </div>
+                        <div class="form-group">
+                            {{ form.duration.label(class="font-weight-bold") }}
+                            {{ form.duration(class="form-control") }}
+                            {% for error in form.duration.errors %}
+                                <div class="invalid-feedback">{{ error }}</div>
+                            {% endfor %}
+                        </div>
+                        <div class="form-group">
+                            {{ form.total_stops.label(class="font-weight-bold") }}
+                            {{ form.total_stops(class="form-control") }}
+                            {% for error in form.total_stops.errors %}
+                                <div class="invalid-feedback">{{ error }}</div>
+                            {% endfor %}
+                        </div>
+                        <div class="form-group">
+                            {{ form.additional_info.label(class="font-weight-bold") }}
+                            {{ form.additional_info(class="form-control") }}
+                            {% for error in form.additional_info.errors %}
+                                <div class="invalid-feedback">{{ error }}</div>
+                            {% endfor %}
+                        </div>
+                        <div class="form-group">
+                            {{ form.submit(class="btn btn-primary") }}
+                        </div>
+                    </form>
+                    <div class="output-container">
+                        {{ output }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

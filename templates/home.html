@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<style>
+    .hero-image {
+        background-image: url("{{ url_for('static', filename='images/flight3.jpg') }}");
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: black;
+    }
+</style>
+
+<div class="hero-image">
+    <div class="container text-center">
+        <h1>Welcome to the {{ title }} page!</h1>
+        <h3>This is a Flight Prices Prediction model based on Machine Learning.</h3>
+        <a href="{{ url_for('predict') }}" class="btn btn-primary btn-lg">Predict Flight Price</a>
+    </div>
+</div>
+{% endblock %}
